@@ -18,10 +18,10 @@ class BgColorChange {
   constructor(element, color, delay, offset) {
     this.targets = element;
     this.backgroundColor = color;
-    this.duration = 1000;
+    this.duration = 800;
     this.easing = 'easeInOutQuad';
     this.delay = delay;
-    // this.offset = offset;
+    this.offset = offset;
   }
 };
 
@@ -38,27 +38,32 @@ timeline
   duration: 500,
   easing: 'easeInOutQuad',
   delay: 500,
+  offset: '-=0'
 })
 .add(new TFadeIn('#t2'))
 .add(new TFadeIn('#t3'))
 .add(new TFadeIn('#t4'))
 .add({
   targets: '#t4',
-  delay: 800
+  delay: 800,
+  offset: '-=0',
 })
 // "really? the whole stack?"
 .add([{
   targets: '.pancake-text',
   opacity: 0,
-  duration: '1'
+  duration: '1',
+  offset: '-=0'
 }, {
     targets: '.pancake',
     backgroundColor: secondaryColor,
-    duration: '1'
+    duration: '1',
+    offset: '-=0'
 }, {
   targets: '#t1',
   duration: '1',
   opacity: 1,
+  offset: '-=0',
   begin: function() {
     justifyFlex('.pancake', 'end');
     $('#t1').text('really?')
@@ -69,6 +74,7 @@ timeline
   targets: ['#t2', '#t3', '#t4'],
   duration: '1',
   opacity: 1,
+  offset: '-=0',
   begin: function() {
     $('#t2').text('the full');
     $('#t3').text('stack?');
@@ -80,6 +86,7 @@ timeline
   delay: 1500,
   backgroundColor: primaryColor,
   duration: 1,
+  offset: '-=0',
   begin: function() {
     emptyText('.pancake-text');
     justifyFlex('.pancake', 'start');
@@ -87,6 +94,7 @@ timeline
 })
 .add({
   targets: '.pancake-text',
+  offset: '-=0',
   begin: function() {
     $('#t2').text('yes!');
   }
@@ -94,6 +102,7 @@ timeline
 .add({
   targets: '.pancake-text',
   delay: 300,
+  offset: '-=0',
   begin: function() {
     $('#t3').text('the full');
     $('#t4').text('stack');
@@ -105,6 +114,7 @@ timeline
   delay: 1000,
   backgroundColor: secondaryColor,
   duration: 1,
+  offset: '-=0',
   begin: function() {
     emptyText('.pancake-text');
     justifyFlex('.pancake', 'end');
@@ -113,6 +123,7 @@ timeline
 .add({
   targets: '.pancake-text',
   duration: 1,
+  offset: '-=0',
   begin: function() {
     $('#t1').text('so...');
   }
@@ -121,6 +132,7 @@ timeline
   targets: '.pancake-text',
   delay: 1000,
   duration: 1,
+  offset: '-=0',
   begin: function() {
     $('#t2').text('you only know');
     $('#t3').text('part of');
@@ -133,6 +145,7 @@ timeline
   delay: 1000,
   backgroundColor: primaryColor,
   duration: 1,
+  offset: '-=0',
   begin: function() {
     justifyFlex('#p1', 'start');
     $('#t1').text('NO!');
@@ -143,6 +156,7 @@ timeline
   delay: 1000,
   backgroundColor: primaryColor,
   duration: 1,
+  offset: '-=0',
   begin: function() {
     justifyFlex("#p2, #p3, #p4", 'start');
     emptyText('#t4');
@@ -156,6 +170,7 @@ timeline
   delay: 2000,
   backgroundColor: secondaryColor,
   duration: 1,
+  offset: '-=0',
   begin: function() {
     emptyText('.pancake-text');
     justifyFlex('.pancake', 'end');
@@ -168,20 +183,23 @@ timeline
   opacity: 0,
   duration: 500,
   easing: 'easeInOutQuad',
-  // offset: 0,
+  offset: '-=0',
   complete: function() {
-    emptyText('.pancake-text');
-    justifyFlex('.pancake', 'end');
+    justifyFlex('.pancake', 'start');
+    $('#t1').text("Portfolio");
+    $('#t2').text("linkedIn").css('font-weight', '200');
+    $('#t3').text("twitter").css('font-weight', '200');
+    $('#t4').text("email").css('font-weight', '200');
   }
 })
-.add(new BgColorChange('#p1', primaryColor, 500, null))
-.add(new BgColorChange('#p2', primaryColor, 1, '-=300'))
-.add(new BgColorChange('#p3', primaryColor, 1, '-=300'))
-.add(new BgColorChange('#p4', primaryColor, 1, '-=300'))
-
-
-
-
+.add(new BgColorChange('#p1', primaryColor, 500, '-=0'))
+.add(new BgColorChange('#p2', '#58D1CE', 0, '-=600'))
+.add(new BgColorChange('#p3', '#74C5C3', 0, '-=600'))
+.add(new BgColorChange('#p4', '#90B8B7', 0, '-=600'))
+.add(new TFadeIn('#t1'))
+.add(new TFadeIn('#t2'))
+.add(new TFadeIn('#t3'))
+.add(new TFadeIn('#t4'))
 
 
 
