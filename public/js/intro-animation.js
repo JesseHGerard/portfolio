@@ -1,4 +1,5 @@
 const timeline = anime.timeline();
+const buttonTimeline = anime.timeline();
 const primaryColor = '#3CDDD9';
 const secondaryColor = '#D8D316';
 const emptyText = (domNode) => $(domNode).text('');
@@ -25,10 +26,52 @@ class BgColorChange {
   }
 };
 
+const loadPortfolioButtons = (delay) => {
+  buttonTimeline
+  .add({
+    targets: '.pancake-text',
+    delay: delay,
+    opacity: 0,
+    duration: 500,
+    easing: 'easeInOutQuad',
+    offset: '-=0',
+    complete: function() {
+      justifyFlex('.pancake', 'start');
+      $('#t1').text("Portfolio");
+      $('#t2').text("linkedIn").css('font-weight', '200');
+      $('#t3').text("twitter").css('font-weight', '200');
+      $('#t4').text("email").css('font-weight', '200');
+    }
+  })
+  .add(new BgColorChange('#p1', primaryColor, 500, '-=0'))
+  .add(new BgColorChange('#p2', '#58D1CE', 0, '-=600'))
+  .add(new BgColorChange('#p3', '#74C5C3', 0, '-=600'))
+  .add(new BgColorChange('#p4', '#90B8B7', 0, '-=600'))
+  .add(new TFadeIn('#t1'))
+  .add(new TFadeIn('#t2'))
+  .add(new TFadeIn('#t3'))
+  .add(new TFadeIn('#t4'))
 
+}
+
+
+
+
+
+
+
+//  +++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 $(document).ready(() => {
 console.log("Everything's working, thanks for checking!")
+
+$(document).click(() => {
+  $(document).off('click');
+  timeline.pause();
+  loadPortfolioButtons(0);
+});
+
+
 
 timeline
 // "full stack web developer" opacity full
@@ -175,33 +218,14 @@ timeline
     emptyText('.pancake-text');
     justifyFlex('.pancake', 'end');
     $('#t3').text("that's so cool!");
-  }
-})
-.add({
-  targets: '.pancake-text',
-  delay: 1000,
-  opacity: 0,
-  duration: 500,
-  easing: 'easeInOutQuad',
-  offset: '-=0',
+  },
   complete: function() {
-    justifyFlex('.pancake', 'start');
-    $('#t1').text("Portfolio");
-    $('#t2').text("linkedIn").css('font-weight', '200');
-    $('#t3').text("twitter").css('font-weight', '200');
-    $('#t4').text("email").css('font-weight', '200');
+    loadPortfolioButtons(1000);
   }
 })
-.add(new BgColorChange('#p1', primaryColor, 500, '-=0'))
-.add(new BgColorChange('#p2', '#58D1CE', 0, '-=600'))
-.add(new BgColorChange('#p3', '#74C5C3', 0, '-=600'))
-.add(new BgColorChange('#p4', '#90B8B7', 0, '-=600'))
-.add(new TFadeIn('#t1'))
-.add(new TFadeIn('#t2'))
-.add(new TFadeIn('#t3'))
-.add(new TFadeIn('#t4'))
+
 
 
 
 // end of document ready
-})
+});
