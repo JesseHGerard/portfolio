@@ -35,6 +35,9 @@ const loadPortfolioButtons = (delay) => {
     duration: 500,
     easing: 'easeInOutQuad',
     offset: '-=0',
+    begin: function() {
+      $(document).off();
+    },
     complete: function() {
       justifyFlex('.pancake', 'start');
       $('#t1').text("Portfolio");
@@ -65,8 +68,7 @@ const loadPortfolioButtons = (delay) => {
 $(document).ready(() => {
 console.log("Everything's working, thanks for checking!")
 
-$(document).click(() => {
-  $(document).off('click');
+$(document).on('click touchstart', function(){
   timeline.pause();
   loadPortfolioButtons(0);
 });
