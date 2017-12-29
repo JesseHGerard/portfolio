@@ -2,66 +2,18 @@
 <html>
 <head>
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name = "viewport" content = "width = 320, initial-scale = .75, user-scalable = no">
+  <meta name = "viewport" content = "width = 320, initial-scale = 1">
   <title>Jesse Gerard</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Muli:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
   <link href="./public/css/reset.css" rel="stylesheet" type="text/css">
-  <style>
-    html {
-      font-size: 15px;
-      font-family: 'Muli', sans-serif;
-    }
-    .main {
-      width: 32rem;
-      height: 56.8rem;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      font-size: 3rem;
-      font-weight: 400;
-
-      /* border: 1px solid black; */
-    }
-
-    #name {
-      font-size: 4.3rem;
-      font-weight: 200;
-      margin-bottom: 1.5rem;
-    }
-
-    .pancake {
-      width: 25rem;
-      height: 6rem;
-      margin: .5rem 0 .5rem 0;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      color: white;
-      background-color: #3CDDD9;
-    }
-
-    .pancake-text{
-      font-weight: 400;
-      margin: 0 1rem 0 1rem;
-      opacity: 0;
-    }
-
-
-  </style>
-
+  <link href="https://fonts.googleapis.com/css?family=Muli:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="./public/css/style.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
 
-  <div class="main">
-    <h1 id="name">Jesse Gerard</h1>
+  <!-- <div class="main">
+    <h1 class="name">Jesse Gerard</h1>
     <div id="p1" class="pancake">
       <h2 id="t1" class="pancake-text">full</full>
     </div>
@@ -74,13 +26,65 @@
     <div id="p4" class="pancake">
       <h2 id="t4" class="pancake-text">developer</full>
     </div>
+  </div> -->
+
+
+  <!-- <div class="tab">
+    <h2>Jesse Gerard</h2>
+  </div> -->
+
+
+  <div id="portfolio-container">
+    <h1 class="name">porfolio</h1>
+
+    <div id="card-container">
+
+      <div class="card">
+        <div class="card-header">
+          <h2>serfboard</h2>
+          <p>sms comments aggrigated into a dashboard</p>
+          <div>
+            <a href=""><p>/code on github</p></a>
+            <a href=""><p>/video walkthrough</p></a>
+            <a href=""><p>/live website</p></a>
+          </div>
+        </div>
+        <img src="./public/images/serfboard.jpg">
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h2>serfboard</h2>
+          <p>sms comments aggrigated into a dashboard</p>
+          <div>
+            <a href=""><p>/code on github</p></a>
+            <a href=""><p>/video walkthrough</p></a>
+            <a href=""><p>/live website</p></a>
+          </div>
+        </div>
+        <img src="./public/images/serfboard.jpg">
+      </div><div class="card">
+        <div class="card-header">
+          <h2>serfboard</h2>
+          <p>sms comments aggrigated into a dashboard</p>
+          <div>
+            <a href=""><p>/code on github</p></a>
+            <a href=""><p>/video walkthrough</p></a>
+            <a href=""><p>/live website</p></a>
+          </div>
+        </div>
+        <img src="./public/images/serfboard.jpg">
+      </div>
 
 
 
-  </div>
+
+    </div>
+</div>
+
+
 
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="./public/js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script src="./public/js/anime.min.js" type="text/javascript"></script>
 <script src="./public/js/intro-animation.js" type="text/javascript"></script>
 </html>

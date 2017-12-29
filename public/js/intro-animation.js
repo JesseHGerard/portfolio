@@ -54,9 +54,17 @@ const loadPortfolioButtons = (delay) => {
   .add(new TFadeIn('#t2'))
   .add(new TFadeIn('#t3'))
   .add(new TFadeIn('#t4'))
+};
 
+
+class card {
+  constructor(){
+
+  }
+  render() {
+
+  }
 }
-
 
 
 
@@ -66,7 +74,7 @@ const loadPortfolioButtons = (delay) => {
 //  +++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 $(document).ready(() => {
-console.log("Everything's working, thanks for checking!")
+
 
 $(document).on('click touchstart', function(){
   timeline.pause();
@@ -74,7 +82,7 @@ $(document).on('click touchstart', function(){
 });
 
 
-
+/*
 timeline
 // "full stack web developer" opacity full
 .add({
@@ -225,7 +233,7 @@ timeline
     loadPortfolioButtons(1000);
   }
 })
-
+*/
 
 
 
