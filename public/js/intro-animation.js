@@ -57,15 +57,77 @@ const loadPortfolioButtons = (delay) => {
 };
 
 
-class card {
-  constructor(){
-
+class Card {
+  constructor(o){
+    this.title = o.title;
+    this.comment = o.comment;
+    this.githubUrl = o.github;
+    this.videoUrl = o.video;
+    this.liveWebsiteUrl = o.liveWebsite;
+    this.imageUrl = o.image;
+  }
+  github() {
+    if (this.githubUrl) {
+      return `<a href="${this.githubUrl}" target="_blank"><p>/code on github</p></a>`;
+    } else {
+      return '';
+    };
+  }
+  videoWalkthrough() {
+    if (this.videoUrl) {
+      return `<a href="${this.videoUrl}" target="_blank"><p>/video walkthrough</p></a>`;
+    } else {
+      return '';
+    };
+  }
+  liveWebsite() {
+    if (this.liveWebsiteUrl) {
+      return `<a href="${this.liveWebsiteUrl}" target="_blank"><p>/live website</p></a>`;
+    } else {
+      return '';
+    };
   }
   render() {
-
+    $('#card-container').append(`
+      <div class="card">
+        <div class="card-header">
+          <h2>${this.title}</h2>
+          <p>${this.comment}</p>
+          <div>
+            ${this.github()}
+            ${this.videoWalkthrough()}
+            ${this.liveWebsite()}
+          </div>
+        </div>
+        <a href="${this.liveWebsiteUrl}" target="_blank"><img src="./public/images/${this.imageUrl}">
+      </div>
+    `);
   }
-}
+};
 
+const serfboard = new Card({
+  title: 'serfboard',
+  comment: 'sms comments aggrigated into a dashboard',
+  github: 'https://github.com/JesseHGerard/landlord',
+  liveWebsite: 'https://serfboard.herokuapp.com/',
+  image: 'serfboard.jpg'
+});
+
+const password = new Card({
+  title: 'password',
+  comment: 'utility used to create very secure, yet memorable passwords',
+  github: 'https://github.com/JesseHGerard/randompassword',
+  liveWebsite: 'https://jessehgerard.github.io/randompassword/',
+  image: 'random.jpg'
+});
+
+const picAorB = new Card({
+  title: 'picAorB',
+  comment: 'crowd source answers to "A or B" questions using twitter',
+  github: 'https://github.com/JesseHGerard/picAorB',
+  liveWebsite: 'https://picaorb.herokuapp.com/poll/935597635561574400',
+  image: 'picAorB.jpg'
+});
 
 
 
@@ -75,6 +137,9 @@ class card {
 
 $(document).ready(() => {
 
+serfboard.render();
+password.render();
+picAorB.render();
 
 $(document).on('click touchstart', function(){
   timeline.pause();
