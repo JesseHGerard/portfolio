@@ -104,6 +104,16 @@ const linkWrap = (el, url) => {
     $(`${el}`).wrap(`<a href="${url}" target="_blank"></a>`);
 };
 
+const portfolioButtonOn = () => {
+  $('#p1').on('click touchstart', function() {
+    $('#p1').off();
+    mainUp();
+    makePortfolio();
+    makeTab();
+  });
+};
+
+
 const loadPortfolioButtons = (delay) => {
   buttonTimeline
   .add({
@@ -124,11 +134,7 @@ const loadPortfolioButtons = (delay) => {
       $('#t4').text("email").css('font-weight', '200');
 
       // define button functionality
-      $('#p1').on('click touchstart', function() {
-        mainUp();
-        makePortfolio();
-        makeTab();
-      });
+      portfolioButtonOn();
       linkWrap('#p2', 'https://www.linkedin.com/in/jessehgerard');
       linkWrap('#p3', 'https://twitter.com/jessehg');
       linkWrap('#p4', );
@@ -163,10 +169,12 @@ const makeTab = () => {
   });
 
   $('.tab').on('click touchstart', function() {
+    $('.tab').off();
     $('html').animate({ scrollTop: 0 }, 'fast',
       function() {
         killTab();
         killPortfolio();
+        portfolioButtonOn();
         mainDown();
       }
     )
@@ -403,20 +411,13 @@ const openingAnimation = () => {
 
 $(document).ready(() => {
 
+  // listen for skip animation
+  $(document).on('click touchstart', function(){
+    timeline.pause();
+    loadPortfolioButtons(0);
+  });
 
+  // run opeing animation
+  openingAnimation();
 
-$(document).on('click touchstart', function(){
-  timeline.pause();
-  loadPortfolioButtons(0);
-});
-
-openingAnimation();
-
-
-
-
-
-
-
-// end of document ready
 });
