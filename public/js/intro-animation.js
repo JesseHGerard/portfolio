@@ -1,9 +1,17 @@
 const timeline = anime.timeline();
 const buttonTimeline = anime.timeline();
-const primaryColor = '#3CDDD9';
-const secondaryColor = '#D8D316';
+
 const emptyText = (domNode) => $(domNode).text('');
 const justifyFlex = (domNode, startOrEnd) => $(domNode).css('justify-content', `flex-${startOrEnd}`);
+
+const color = {
+  primary: '#3CDDD9',
+  secondary: '#D8D316',
+  scooter: '#29ACC1',
+  picton: '#3EB6DB',
+  aquamarine: '#67E5BB',
+  java: '#26C4B5'
+}
 
 // template for portfolio cards
 class Card {
@@ -14,6 +22,7 @@ class Card {
     this.videoUrl = o.video;
     this.liveWebsiteUrl = o.liveWebsite;
     this.imageUrl = o.image;
+    this.color = o.color;
   }
   github() {
     if (this.githubUrl) {
@@ -37,9 +46,13 @@ class Card {
     };
   }
   render() {
+    let backgroundColor;
+    if (this.color) {
+      backgroundColor = `style="background-color: ${this.color};"`;
+    };
     $('#card-container').append(`
       <div class="card">
-        <div class="card-header">
+        <div class="card-header" ${backgroundColor}>
           <h2>${this.title}</h2>
           <p>${this.comment}</p>
           <div>
@@ -60,7 +73,8 @@ const serfboard = new Card({
   comment: 'sms comments aggrigated into a dashboard',
   github: 'https://github.com/JesseHGerard/landlord',
   liveWebsite: 'https://serfboard.herokuapp.com/',
-  image: 'serfboard.jpg'
+  image: 'serfboard.jpg',
+  color: color.scooter
 });
 
 const password = new Card({
@@ -68,7 +82,8 @@ const password = new Card({
   comment: 'utility used to create very secure, yet memorable passwords',
   github: 'https://github.com/JesseHGerard/randompassword',
   liveWebsite: 'https://jessehgerard.github.io/randompassword/',
-  image: 'random.jpg'
+  image: 'random.jpg',
+  color: color.picton
 });
 
 const picAorB = new Card({
@@ -76,7 +91,8 @@ const picAorB = new Card({
   comment: 'crowd source answers to "A or B" questions using twitter',
   github: 'https://github.com/JesseHGerard/picAorB',
   liveWebsite: 'https://picaorb.herokuapp.com/poll/935597635561574400',
-  image: 'picAorB.jpg'
+  image: 'picAorB.jpg',
+  color: color.aquamarine
 });
 
 class TFadeIn {
@@ -140,7 +156,7 @@ const loadPortfolioButtons = (delay) => {
       linkWrap('#p4', );
     }
   })
-  .add(new BgColorChange('#p1', primaryColor, 500, '-=0'))
+  .add(new BgColorChange('#p1', color.primary, 500, '-=0'))
   .add(new BgColorChange('#p2', '#58D1CE', 0, '-=600'))
   .add(new BgColorChange('#p3', '#74C5C3', 0, '-=600'))
   .add(new BgColorChange('#p4', '#90B8B7', 0, '-=600'))
@@ -153,16 +169,20 @@ const loadPortfolioButtons = (delay) => {
 
 const makeTab = () => {
   let tab = $(`
-  <div class="tab">
-    <h2>Jesse Gerard</h2>
-  </div>`)
+    <div class="tab-container">
+      <div class="gradient"></div>
+      <div class="tab">
+        <h2>Jesse Gerard</h2>
+      </div>
+    </div>
+  `)
   .css('top', '-20%');
 
   $('#all').append(tab);
 
   anime({
-    targets: '.tab',
-    delay: 1000,
+    targets: '.tab-container',
+    delay: 1500,
     top: '0%',
     duration: 1000,
     easing: 'easeInOutQuad'
@@ -184,7 +204,7 @@ const makeTab = () => {
 const killTab = () => {
   $('.tab').off();
   anime({
-    targets: '.tab',
+    targets: '.tab-container',
     delay: 1000,
     top: '-20%',
     duration: 1000,
@@ -275,7 +295,7 @@ const openingAnimation = () => {
     offset: '-=0'
   }, {
       targets: '.pancake',
-      backgroundColor: secondaryColor,
+      backgroundColor: color.secondary,
       duration: '1',
       offset: '-=0'
   }, {
@@ -303,7 +323,7 @@ const openingAnimation = () => {
   .add({
     targets: '.pancake',
     delay: 1500,
-    backgroundColor: primaryColor,
+    backgroundColor: color.primary,
     duration: 1,
     offset: '-=0',
     begin: function() {
@@ -331,7 +351,7 @@ const openingAnimation = () => {
   .add({
     targets: '.pancake',
     delay: 1000,
-    backgroundColor: secondaryColor,
+    backgroundColor: color.secondary,
     duration: 1,
     offset: '-=0',
     begin: function() {
@@ -362,7 +382,7 @@ const openingAnimation = () => {
   .add({
     targets: '#p1',
     delay: 1000,
-    backgroundColor: primaryColor,
+    backgroundColor: color.primary,
     duration: 1,
     offset: '-=0',
     begin: function() {
@@ -373,7 +393,7 @@ const openingAnimation = () => {
   .add({
     targets: ['#p2', '#p3', '#p4'],
     delay: 1000,
-    backgroundColor: primaryColor,
+    backgroundColor: color.primary,
     duration: 1,
     offset: '-=0',
     begin: function() {
@@ -387,7 +407,7 @@ const openingAnimation = () => {
   .add({
     targets: '.pancake',
     delay: 2000,
-    backgroundColor: secondaryColor,
+    backgroundColor: color.secondary,
     duration: 1,
     offset: '-=0',
     begin: function() {

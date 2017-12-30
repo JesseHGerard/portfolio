@@ -47,7 +47,11 @@ a {
   opacity: 0;
 }
 
-.tab {
+.tab-container {
+  position: fixed;
+}
+
+.tab{
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
@@ -59,7 +63,15 @@ a {
   background-color: #3CDDD9;
   z-index: 10;
   margin: 0;
-  opacity: .5;
+}
+
+.tab-container .gradient {
+  position: fixed;
+  width: 100vw;
+  height: 9rem;
+  background: linear-gradient(white, transparent);
+  z-index: 9;
+  pointer-events: none;
 }
 
 .tab h2 {
