@@ -153,13 +153,13 @@ const loadPortfolioButtons = (delay) => {
       $('#t1').text("Portfolio");
       $('#t2').text("linkedIn").css('font-weight', '200');
       $('#t3').text("twitter").css('font-weight', '200');
-      $('#t4').text("email").css('font-weight', '200');
+      $('#t4').text("github").css('font-weight', '200');
 
       // define button functionality
       portfolioButtonOn();
       linkWrap('#p2', 'https://www.linkedin.com/in/jessehgerard');
       linkWrap('#p3', 'https://twitter.com/jessehg');
-      linkWrap('#p4', );
+      linkWrap('#p4', 'https://github.com/JesseHGerard');
     }
   })
   .add(new BgColorChange('#p1', color.primary, 500, '-=0'))
