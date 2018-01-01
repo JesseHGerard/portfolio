@@ -69,7 +69,7 @@ a {
   position: fixed;
   width: 100vw;
   height: 9rem;
-  background: linear-gradient(white, transparent);
+  background: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,0.001));
   z-index: 9;
   pointer-events: none;
 }
@@ -133,9 +133,10 @@ a {
   font-weight: 400;
 }
 
-.card-header p {
+.card-header .comment {
   font-size: 2.1rem;
   font-weight: 200;
+  margin-top: 2.5rem;
 }
 
 .card-header a p {

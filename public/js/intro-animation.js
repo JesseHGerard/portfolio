@@ -1,8 +1,7 @@
 const timeline = anime.timeline();
 const buttonTimeline = anime.timeline();
-
-const emptyText = (domNode) => $(domNode).text('');
-const justifyFlex = (domNode, startOrEnd) => $(domNode).css('justify-content', `flex-${startOrEnd}`);
+const emptyText = (elm) => $(elm).text('');
+const justifyFlex = (elm, startOrEnd) => $(elm).css('justify-content', `flex-${startOrEnd}`);
 
 const color = {
   primary: '#3CDDD9',
@@ -46,22 +45,29 @@ class Card {
     };
   }
   render() {
-    let backgroundColor;
+    let backgroundColor, readme;
+    // check for new card backgroundColor
     if (this.color) {
       backgroundColor = `style="background-color: ${this.color};"`;
     };
+    // check which card link to use based on gitHub url
+    if (this.githubUrl) {
+      readme = `${this.githubUrl}/blob/master/README.md`;
+    } else {
+      readme = this.liveWebsite;
+    };
     $('#card-container').append(`
       <div class="card">
-        <div class="card-header" ${backgroundColor}>
+        <a href="${readme}" target="_blank"><div class="card-header" ${backgroundColor}>
           <h2>${this.title}</h2>
-          <p>${this.comment}</p>
+          <p class="comment">${this.comment}</p>
           <div>
             ${this.github()}
             ${this.videoWalkthrough()}
             ${this.liveWebsite()}
           </div>
-        </div>
-        <a href="${this.liveWebsiteUrl}" target="_blank"><img src="./public/images/${this.imageUrl}">
+        </div></a>
+        <a href="${this.liveWebsiteUrl}" target="_blank"><img src="./public/images/${this.imageUrl}"></a>
       </div>
     `);
   }
@@ -70,7 +76,7 @@ class Card {
 // define portfolio cards
 const serfboard = new Card({
   title: 'serfboard',
-  comment: 'sms comments aggrigated into a dashboard',
+  comment: 'sms comments aggregated into a dashboard',
   github: 'https://github.com/JesseHGerard/landlord',
   liveWebsite: 'https://serfboard.herokuapp.com/',
   image: 'serfboard.jpg',
@@ -79,7 +85,7 @@ const serfboard = new Card({
 
 const password = new Card({
   title: 'password',
-  comment: 'utility used to create very secure, yet memorable passwords',
+  comment: 'utility for creating very secure, yet memorable passwords',
   github: 'https://github.com/JesseHGerard/randompassword',
   liveWebsite: 'https://jessehgerard.github.io/randompassword/',
   image: 'random.jpg',
