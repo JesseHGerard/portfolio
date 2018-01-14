@@ -10,7 +10,7 @@ const color = {
   picton: '#3EB6DB',
   aquamarine: '#67E5BB',
   java: '#26C4B5'
-}
+};
 
 // template for portfolio cards
 class Card {
@@ -92,6 +92,17 @@ const password = new Card({
   color: color.picton
 });
 
+const vrPhotography = new Card({
+  title: 'VR Photos',
+  comment: 'tours in VR, new media for the architecture industry',
+  image: 'nbm.jpg',
+  github: 'https://github.com/JesseHGerard/vr-photography',
+  video: 'http://hdphoto.gallery/',
+  liveWebsite: 'http://hdphoto.gallery/Directory/',
+  color: color.java
+
+});
+
 const picAorB = new Card({
   title: 'picAorB',
   comment: 'crowd source answers to "A or B" questions using twitter',
@@ -150,10 +161,13 @@ const loadPortfolioButtons = (delay) => {
     },
     complete: function() {
       justifyFlex('.pancake', 'start');
-      $('#t1').text("Portfolio");
-      $('#t2').text("linkedIn").css('font-weight', '200');
+      $('#t1').text("portfolio");
+      $('#t2').text("linkedin").css('font-weight', '200');
+      $('#t2').append($(`<img src="public/images/external.svg">`));
       $('#t3').text("twitter").css('font-weight', '200');
+      $('#t3').append($(`<img src="public/images/external.svg">`));
       $('#t4').text("github").css('font-weight', '200');
+      $('#t4').append($(`<img src="public/images/external.svg">`));
 
       // define button functionality
       portfolioButtonOn();
@@ -232,6 +246,7 @@ const makePortfolio = () => {
   $('#all').append(portfolioContainer);
   serfboard.render();
   password.render();
+  vrPhotography.render();
   picAorB.render();
 
   anime({
