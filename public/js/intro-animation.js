@@ -93,12 +93,22 @@ const password = new Card({
 });
 
 const vrPhotography = new Card({
-  title: 'VR Photos',
+  title: 'vr photos',
   comment: 'tours in VR, new media for the architecture industry',
   image: 'nbm.jpg',
   github: 'https://github.com/JesseHGerard/vr-photography',
   video: 'http://hdphoto.gallery/',
   liveWebsite: 'http://hdphoto.gallery/Directory/',
+  color: color.java
+
+});
+
+const timeBender = new Card({
+  title: 'time bender',
+  comment: 'experimental multi-device vr game, made with react & react vr',
+  image: 'time-bender.jpg',
+  github: 'https://github.com/JesseHGerard/time-bender',
+  liveWebsite: 'https://time-bender.herokuapp.com/',
   color: color.java
 
 });
@@ -244,8 +254,9 @@ const makePortfolio = () => {
     .css('top', '100vh');
 
   $('#all').append(portfolioContainer);
-  serfboard.render();
+  timeBender.render();
   password.render();
+  serfboard.render();
   vrPhotography.render();
   picAorB.render();
 

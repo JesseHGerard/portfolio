@@ -1,0 +1,42 @@
+{
+  "name": "Portolio",
+  "display": "fullscreen",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./public/images/jg.svg",
+      "sizes": "72x72"
+    },
+    {
+      "src": "./public/images/jg-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "./public/images/jg-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "./public/images/jg-167.png",
+      "sizes": "167x167",
+      "type": "image/png"
+    },
+    {
+      "src": "./public/images/jg-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "./public/images/jg-152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "./public/images/jg-120.png",
+      "sizes": "120x120",
+      "type": "image/png"
+    }
+  ]
+
+}
