@@ -80,7 +80,7 @@ const serfboard = new Card({
   github: 'https://github.com/JesseHGerard/landlord',
   liveWebsite: 'https://serfboard.herokuapp.com/',
   image: 'serfboard.jpg',
-  color: color.scooter
+  color: color.java
 });
 
 const password = new Card({
@@ -99,7 +99,7 @@ const vrPhotography = new Card({
   github: 'https://github.com/JesseHGerard/vr-photography',
   video: 'http://hdphoto.gallery/',
   liveWebsite: 'http://hdphoto.gallery/Directory/',
-  color: color.java
+  color: color.scooter
 
 });
 
@@ -110,6 +110,15 @@ const timeBender = new Card({
   github: 'https://github.com/JesseHGerard/time-bender',
   liveWebsite: 'https://time-bender.herokuapp.com/',
   color: color.java
+});
+
+const testTimer = new Card({
+  title: 'test:timer',
+  comment: 'higher test scores through better time management',
+  image: 'test-timer.jpg',
+  github: 'https://github.com/JesseHGerard/test-timer',
+  liveWebsite: 'https://jessehgerard.github.io/test-timer/',
+  color: color.scooter
 
 });
 
@@ -254,6 +263,7 @@ const makePortfolio = () => {
     .css('top', '100vh');
 
   $('#all').append(portfolioContainer);
+  testTimer.render();
   timeBender.render();
   password.render();
   serfboard.render();
